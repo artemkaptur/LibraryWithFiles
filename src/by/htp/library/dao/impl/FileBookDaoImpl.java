@@ -25,12 +25,10 @@ public class FileBookDaoImpl implements BookDao {
 		}
 
 		byte[] bytes = new byte[1024];
-		char[] chars = new char[1024];
 
 		readFromFile(bytes);
-		bytesIntoChars(bytes, chars);
 
-		String library = new String(chars);
+		String library = new String(bytes);
 
 		String[] booksInStrings = library.split("\n");
 		for (int j = 0; j < 5; j++) {
@@ -49,14 +47,6 @@ public class FileBookDaoImpl implements BookDao {
 			} while (count > 0);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
-
-	private void bytesIntoChars(byte[] bytes, char[] chars) {
-		int i = 0;
-		for (byte b : bytes) {
-			chars[i] = (char) b;
-			i++;
 		}
 	}
 
